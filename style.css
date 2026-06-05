@@ -1,0 +1,399 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+    background:#47668e;
+    color:#222;
+    line-height:1.7;
+    padding:30px;
+}
+
+/* Main Heading */
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#0f172a;
+    font-size:40px;
+}
+
+/* Section Headings */
+
+h2{
+    margin-top:35px;
+    margin-bottom:15px;
+    color:#2563eb;
+    border-left:6px solid #2563eb;
+    padding-left:10px;
+    font-size:28px;
+}
+
+h3{
+    margin-top:15px;
+    margin-bottom:10px;
+    color:#111827;
+    font-size:22px;
+}
+
+/* Paragraph */
+
+p{
+    margin-bottom:15px;
+    font-size:17px;
+}
+
+/* Lists */
+
+ul{
+    margin-left:30px;
+    margin-bottom:20px;
+}
+
+ol{
+    margin-left:30px;
+    margin-bottom:20px;
+}
+
+li{
+    margin-bottom:10px;
+}
+
+/* Formula Box */
+
+.formula-box{
+    background:#111827;
+    color:#f9fafb;
+    padding:18px;
+    border-radius:10px;
+    margin-top:10px;
+    margin-bottom:20px;
+    overflow-x:auto;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* Information Box */
+
+.info-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+
+.white-box{
+    background:white;
+    color:#111827;
+    padding:18px 20px;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+    line-height:1.7;
+}
+
+.white-box table{
+    width:100%;
+    border-collapse:collapse;
+    margin:0;
+}
+
+.white-box table th,
+.white-box table td{
+    padding:12px;
+    text-align:left;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.white-box table th{
+    background:#f3f4f6;
+    font-weight:bold;
+    color:#111827;
+}
+
+.white-box table td{
+    color:#4b5563;
+}
+
+/* Highlight */
+
+.highlight{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+/* Horizontal Line */
+
+hr{
+    margin:35px 0;
+    border:none;
+    height:1px;
+    background:#d1d5db;
+}
+
+/* Decision Box */
+
+.decision-box{
+    background:#ecfeff;
+    border-left:6px solid #06b6d4;
+    padding:20px;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+/* Warning Box */
+
+.warning-box{
+    background:#fff7ed;
+    border-left:6px solid #f97316;
+    padding:20px;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+/* Responsive Design */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    h3{
+        font-size:20px;
+    }
+
+    p, li{
+        font-size:15px;
+    }
+
+    .formula-box{
+        font-size:16px;
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(7, 17, 31, 0.45), rgba(7, 17, 31, 0.45)),
+    url("background.jpg") center/cover no-repeat fixed;
+  color: #1f2937;
+  line-height: 1.7;
+  padding: 30px;
+}
+
+/* Main Page Container */
+body > *:not(.loader) {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 30px;
+  color: white;
+  font-size: 42px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #db2777);
+  box-shadow: 0 15px 35px rgba(124, 58, 237, 0.35);
+}
+
+/* Intro Paragraph */
+h1 + p {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  font-size: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #7c3aed;
+}
+
+/* Section Card Effect */
+h2 {
+  margin-top: 35px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 27px;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+h3 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  color: #FF69B4;
+  font-size: 22px;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 17px;
+}
+
+/* Lists */
+ul,
+ol {
+  background: #ffffff;
+  padding: 22px 25px 22px 45px;
+  border-radius: 16px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li::marker {
+  color: #db2777;
+  font-weight: bold;
+}
+
+/* Formula Style */
+p:has(sub),
+p:has(sup) {
+  background: linear-gradient(135deg, #111827, #312e81);
+  color: #f8fafc;
+  padding: 18px 20px;
+  border-radius: 16px;
+  font-size: 19px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25);
+  overflow-x: auto;
+}
+
+/* Important Highlight Boxes */
+p:nth-of-type(odd) {
+  border-left: 5px solid #38bdf8;
+}
+
+p:nth-of-type(even) {
+  border-left: 5px solid #f472b6;
+}
+
+/* Horizontal Line */
+hr {
+  margin: 38px 0;
+  border: none;
+  height: 3px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #db2777, #f59e0b);
+}
+
+/* Protection Logic Ordered List */
+ol {
+  background: linear-gradient(135deg, #ffffff, #eff6ff);
+  border: 2px solid #bfdbfe;
+}
+
+/* Hover Effects */
+h2,
+ul,
+ol,
+h1 + p,
+p:has(sub),
+p:has(sup) {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h2:hover,
+ul:hover,
+ol:hover,
+h1 + p:hover,
+p:has(sub):hover,
+p:has(sup):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 30px;
+    padding: 22px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p,
+  li {
+    font-size: 15px;
+  }
+
+  p:has(sub),
+  p:has(sup) {
+    font-size: 16px;
+  }
+}
+
+.formula-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    background: linear-gradient(135deg, #111827, #312e81);
+    padding:18px 20px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(17,24,39,0.25);
+    margin-bottom:20px;
+}
+
+/* buttons for calculate in ?RSNSP = ( ?Pm2 + ?Pn2 ) / ?Pmin */
+
+.formula-row p{
+    margin:0;
+    color:#fcfcf8;
+    font-size:19px;
+    font-weight:600;
+}
+
+.calculate-btn{
+    text-decoration:none;
+    background:#22c55e;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+    white-space:nowrap;
+}
+
+.calculate-btn:hover{
+    background:#16a34a;
+    transform:scale(1.05);
+}

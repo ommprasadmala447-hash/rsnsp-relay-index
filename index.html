@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula Documentation - ∆RSNSP Protection Scheme</title>
+  <style>
+    /* =========================
+   PREMIUM PAGE LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
+    z-index:99999;
+    transition:opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader--hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border:5px solid rgba(255,255,255,0.15);
+    border-top:5px solid #38bdf8;
+    border-radius:50%;
+    animation:spin 1.2s linear infinite;
+}
+
+.loader::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    border:5px solid rgba(255,255,255,0.15);
+    border-top:5px solid #f472b6;
+    border-radius:50%;
+    animation:spinReverse 0.8s linear infinite;
+}
+
+.loader-text{
+    position:absolute;
+    margin-top:180px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:4px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spinReverse{
+    from{
+        transform:rotate(360deg);
+    }
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:0.5;
+    }
+    50%{
+        opacity:1;
+    }
+}
+  </style>
+  <script>
+window.addEventListener("load", () => {
+
+    const loader = document.querySelector(".loader");
+
+    // Keep loader visible for 4 seconds
+    setTimeout(() => {
+
+        loader.classList.add("loader--hidden");
+
+        loader.addEventListener("transitionend", () => {
+            loader.remove();
+        });
+
+    }, 4000); // 4000ms = 4 seconds
+
+});
+</script>
+</head>
+
+ <link rel="stylesheet" href="style.css">
+
+<body>
+    <div class="loader">
+    <div class="loader-text">
+        ΔRSNSP LOADING...
+    </div>
+</div>
+
+
+  <h1>Formula Documentation: ∆RSNSP Protection Scheme</h1>
+
+  <p>
+    This documentation explains the important formulas used in the
+    Incremental Negative Sequence Power based protection scheme for
+    AC microgrid feeders.
+  </p>
+
+  <hr>
+
+  <h2>1. Negative Sequence Component Formula</h2>
+
+  <h3>Formula</h3>
+  <p>
+    ψ<sub>x2</sub> =
+    1/3 ( ψ<sub>ax</sub> + α<sup>2</sup>ψ<sub>bx</sub> + αψ<sub>cx</sub> )
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    This formula is used to calculate the negative sequence voltage or
+    negative sequence current at a bus.
+  </p>
+
+  <h3>Symbols</h3>
+  <ul>
+    <li>ψ = Voltage V or Current I</li>
+    <li>x = Bus end, either m or n</li>
+    <li>ψ<sub>ax</sub>, ψ<sub>bx</sub>, ψ<sub>cx</sub> = Phase a, b, c values</li>
+    <li>α = 1∠120°</li>
+    <li>ψ<sub>x2</sub> = Negative sequence component</li>
+  </ul>
+
+  <hr>
+
+  <h2>2. Incremental Component Formula</h2>
+
+  <h3>Formula</h3>
+  <p>
+    Δψ<sup>(i)</sup><sub>x2</sub> =
+    ψ<sup>(i)</sup><sub>x2</sub> -
+    ψ<sup>(i-N)</sup><sub>x2</sub>
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    This formula calculates the change in negative sequence voltage or
+    current after a fault occurs.
+  </p>
+
+  <h3>Symbols</h3>
+  <ul>
+    <li>Δψ<sup>(i)</sup><sub>x2</sub> = Incremental negative sequence value</li>
+    <li>ψ<sup>(i)</sup><sub>x2</sub> = Present sample value</li>
+    <li>ψ<sup>(i-N)</sup><sub>x2</sub> = Previous cycle sample value</li>
+    <li>N = Number of samples in one cycle</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. Incremental Negative Sequence Apparent Power</h2>
+
+  <h3>Formula</h3>
+  <p>
+    ΔS<sub>m2</sub> = ΔV<sub>m2</sub> × ΔI<sub>m2</sub><sup>*</sup>
+  </p>
+
+  <p>
+    ΔS<sub>n2</sub> = ΔV<sub>n2</sub> × ΔI<sub>n2</sub><sup>*</sup>
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    These formulas calculate the incremental negative sequence apparent
+    power at bus-m and bus-n.
+  </p>
+
+  <h3>Symbols</h3>
+  <ul>
+    <li>ΔS<sub>m2</sub> = Incremental apparent power at bus-m</li>
+    <li>ΔS<sub>n2</sub> = Incremental apparent power at bus-n</li>
+    <li>ΔV<sub>m2</sub>, ΔV<sub>n2</sub> = Incremental negative sequence voltages</li>
+    <li>ΔI<sub>m2</sub>, ΔI<sub>n2</sub> = Incremental negative sequence currents</li>
+    <li>* = Complex conjugate</li>
+  </ul>
+
+  <hr>
+
+  <h2>4. Incremental Negative Sequence Real Power</h2>
+
+  <h3>Formula</h3>
+  <p>
+    ΔP<sub>m2</sub> = Re(ΔS<sub>m2</sub>)
+  </p>
+
+  <p>
+    ΔP<sub>n2</sub> = Re(ΔS<sub>n2</sub>)
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    These formulas extract the real power part from the apparent power
+    at both ends of the protected feeder.
+  </p>
+
+  <hr>
+
+  <h2>5. Proposed Relaying Feature: ΔRSNSP</h2>
+
+  <h3>Formula</h3>
+ <div class="formula-row">
+    <p>
+        ΔRSNSP =
+        ( ΔP<sub>m2</sub> + ΔP<sub>n2</sub> ) / ΔP<sub>min</sub>
+    </p>
+
+    <a href="index2.html" class="calculate-btn">Calculate</a>
+
+</div>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    ΔRSNSP is the main fault detection index. It is calculated using the
+    sum of incremental negative sequence real powers at both ends of the
+    protected feeder.
+  </p>
+
+  <h3>Symbols</h3>
+  <ul>
+    <li>ΔRSNSP = Ratio of Sum of Negative Sequence Power</li>
+    <li>ΔP<sub>m2</sub> = Incremental real power at bus-m</li>
+    <li>ΔP<sub>n2</sub> = Incremental real power at bus-n</li>
+    <li>ΔP<sub>min</sub> = Minimum value between the two powers</li>
+  </ul>
+
+  <hr>
+
+  <h2>6. Minimum Power Selection Formula</h2>
+
+  <h3>Formula</h3>
+
+  <p>
+    If |ΔP<sub>m2</sub>| &lt; |ΔP<sub>n2</sub>|, then
+    ΔP<sub>min</sub> = ΔP<sub>m2</sub>
+  </p>
+
+  <p>
+    If |ΔP<sub>n2</sub>| &lt; |ΔP<sub>m2</sub>|, then
+    ΔP<sub>min</sub> = ΔP<sub>n2</sub>
+  </p>
+
+  <p>
+    If |ΔP<sub>m2</sub>| = |ΔP<sub>n2</sub>|, then
+    ΔP<sub>min</sub> = ΔP<sub>m2</sub> or ΔP<sub>n2</sub>
+  </p>
+
+  <hr>
+
+  <h2>7. Internal Fault Condition</h2>
+
+  <h3>Formula</h3>
+  <p class="white-box">
+    ΔRSNSP ≥ 2
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    If the fault is inside the protected feeder zone, the value of
+    ΔRSNSP becomes greater than or equal to 2.
+  </p>
+
+  <hr>
+
+  <h2>8. External Fault Condition</h2>
+
+  <h3>Formula</h3>
+  <p class="white-box">
+    ΔRSNSP &lt; 0
+  </p>
+
+  <h3>Meaning</h3>
+  <p class="white-box">
+    If the fault is outside the protected zone, the value of ΔRSNSP
+    becomes negative.
+  </p>
+
+  <hr>
+
+  <h2>9. Threshold Formula</h2>
+
+  <h3>Formula</h3>
+  <p class="white-box">
+    K = 1
+  </p>
+
+  <h3>Decision Rule</h3>
+  <p class="white-box">
+    If ΔRSNSP &gt; K, then internal fault is detected.
+  </p>
+
+  <p class="white-box">
+    If ΔRSNSP ≤ K, then internal fault is not detected.
+  </p>
+
+  <hr>
+
+  <h2>10. Protection Logic</h2>
+
+  <ol>
+    <li>Measure three-phase voltage and current.</li>
+    <li>Calculate negative sequence voltage and current.</li>
+    <li>Calculate incremental components.</li>
+    <li>Calculate incremental apparent power.</li>
+    <li>Calculate incremental real power.</li>
+    <li>Find ΔRSNSP.</li>
+    <li>Compare ΔRSNSP with threshold K.</li>
+    <li>If ΔRSNSP &gt; 1, generate trip signal.</li>
+  </ol>
+<!-- =========================
+PAGE 2 : FAULT TYPE SECTION
+========================= -->
+
+<section class="page2">
+
+  <h1 class="page-title">
+    ⚡ PAGE 2: FAULT TYPE CATEGORIES
+  </h1>
+
+  <p class="page-desc">
+    Explanation of all fault types and how ΔRSNSP responds to each of them.
+  </p>
+
+  <div class="fault-grid">
+
+    <!-- SLG -->
+
+    <div class="fault-card green">
+
+      <h2>🟢 Single Line-to-Ground (SLG)</h2>
+
+      <div class="white-box">
+      <table>
+        <tr>
+          <th>Button</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td>A-G</td>
+          <td>Phase A contacts ground</td>
+        </tr>
+
+        <tr>
+          <td>B-G</td>
+          <td>Phase B contacts ground</td>
+        </tr>
+
+        <tr>
+          <td>C-G</td>
+          <td>Phase C contacts ground</td>
+        </tr>
+      </table>
+      </div>
+
+      <ul>
+        <li>Only one phase is disturbed</li>
+        <li>Produces a small negative sequence component</li>
+        <li>Most common fault in real systems (~70%)</li>
+      </ul>
+
+    </div>
+
+    <!-- DLG -->
+
+    <div class="fault-card orange">
+
+      <h2>🔴 Double Line-to-Ground (DLG)</h2>
+
+      <div class="white-box">
+      <table>
+        <tr>
+          <th>Button</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td>AB-G</td>
+          <td>Phase A and B contact ground</td>
+        </tr>
+
+        <tr>
+          <td>BC-G</td>
+          <td>Phase B and C contact ground</td>
+        </tr>
+
+        <tr>
+          <td>CA-G</td>
+          <td>Phase C and A contact ground</td>
+        </tr>
+      </table>
+      </div>
+
+      <ul>
+        <li>Two phases are disturbed simultaneously</li>
+        <li>Produces stronger negative sequence component than SLG</li>
+      </ul>
+
+    </div>
+
+    <!-- 3 PHASE -->
+
+    <div class="fault-card purple">
+
+      <h2>🟣 Three Phase-to-Ground</h2>
+      <div class="white-box" >
+      <table>
+        <tr>
+          <th>Button</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td>ABC-G</td>
+          <td>All three phases contact ground</td>
+        </tr>
+
+        <tr>
+          <td>ABC</td>
+          <td>All three phases short together (no ground)</td>
+        </tr>
+      </table>
+      </div>
+      <ul>
+        <li>All three phases are disturbed equally</li>
+        <li>ABC-G gave 3.835 >> K=1 → TRIP</li>
+        <li>Considered the most severe fault type</li>
+      </ul>
+
+    </div>
+
+    <!-- NO FAULT -->
+
+    <div class="fault-card blue">
+
+      <h2>🔵 No Fault</h2>
+      <div class="white-box">
+      <table>
+        <tr>
+          <th>Button</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td>NONE</td>
+          <td>No fault applied</td>
+        </tr>
+      </table>
+      </div>
+      <ul>
+        <li>System runs in balanced condition</li>
+        <li>ΔRSNSP stays near 0</li>
+        <li>No trip signal generated</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- DETECTION TABLE -->
+
+  <div class="detect-section">
+
+    <h2 class="detect-title">
+      📊 How ΔRSNSP Detects Each Type
+    </h2>
+    <div class="white-box">
+    <table class="big-table">
+
+      <tr>
+        <th>Code</th>
+        <th>Fault Type</th>
+        <th>Phases Affected</th>
+        <th>NS Component</th>
+        <th>Typical Behaviour</th>
+        <th>Trip</th>
+      </tr>
+
+      <tr>
+        <td>A-G</td>
+        <td>Single Line Ground</td>
+        <td>1 phase</td>
+        <td>Small</td>
+        <td>≈ 0.5 to 1.5</td>
+        <td>Usually No</td>
+      </tr>
+
+      <tr>
+        <td>B-G</td>
+        <td>Single Line Ground</td>
+        <td>1 phase</td>
+        <td>Small</td>
+        <td>≈ 0.5 to 1.5</td>
+        <td>Usually No</td>
+      </tr>
+
+      <tr>
+        <td>C-G</td>
+        <td>Single Line Ground</td>
+        <td>1 phase</td>
+        <td>Small</td>
+        <td>≈ 0.5 to 1.5</td>
+        <td>Usually No</td>
+      </tr>
+
+      <tr>
+        <td>AB-G</td>
+        <td>Double Line Ground</td>
+        <td>2 phases</td>
+        <td>Medium</td>
+        <td>≈ 1.5 to 3</td>
+        <td>YES</td>
+      </tr>
+
+      <tr>
+        <td>ABC-G</td>
+        <td>Three Phase Ground</td>
+        <td>3 phases</td>
+        <td>Large</td>
+        <td>≥ 2</td>
+        <td>TRIP</td>
+      </tr>
+
+      <tr>
+        <td>ABC</td>
+        <td>Three Phase</td>
+        <td>3 phases</td>
+        <td>Large</td>
+        <td>≥ 2</td>
+        <td>TRIP</td>
+      </tr>
+
+      <tr>
+        <td>NONE</td>
+        <td>No Fault</td>
+        <td>None</td>
+        <td>~Zero</td>
+        <td>≈ 0</td>
+        <td>No Trip</td>
+      </tr>
+
+    </table>
+    </div>
+  </div>
+
+  <!-- RULE SECTION -->
+
+  <div class="rule-box">
+
+    <h2>⭐ Key Mathematical Rule</h2>
+
+    <ul>
+      <li>
+        Internal fault → both ΔPm2 and ΔPn2 are negative →
+        their sum divided by minimum always gives ≥ 2
+      </li>
+
+      <li>
+        No fault/external → powers don't change significantly →
+        ΔRSNSP stays below 1 or becomes negative
+      </li>
+    </ul>
+
+    <p class="white-box">
+      That's why your ABC-G test gave
+      <strong>3.835</strong> — all three phases were disturbed,
+      creating large negative sequence power.
+    </p>
+
+  </div>
+
+</section>
+</body>
+</html>

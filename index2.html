@@ -1,0 +1,349 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ΔRSNSP Calculator</title>
+
+    <link rel="stylesheet" href="style2.css">
+    
+
+</head>
+
+<body>
+    <div class="loader">
+    <div class="loader-text">
+        ΔRSNSP CALCULATOR
+    </div>
+</div>
+    <video autoplay loop muted class="back-video">
+        <source src="30158-380473726_tiny.mp4" type="video/mp4">
+
+    </video>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="top-bar">
+
+            <div>
+                <h1>⚡ ΔRSNSP Calculator</h1>
+
+                <p class="subtitle">
+                    Incremental Negative Sequence Power Protection Scheme
+                </p>
+            </div>
+
+            <div class="badge">
+                Protection Relay Tool
+            </div>
+
+        </div>
+
+        <!-- METHOD -->
+
+        <div class="card">
+
+            <label>
+                ⚙ Select Calculation Method
+            </label>
+
+            <select id="method">
+
+                <option value="incremental">
+                    Incremental Values
+                </option>
+
+                <option value="polar">
+                    Polar Form
+                </option>
+
+                <option value="rectangular">
+                    Rectangular Form
+                </option>
+
+                <option value="direct">
+                    Direct ΔPm2 & ΔPn2
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- INCREMENTAL -->
+
+        <div class="card section"
+             id="incrementalSection">
+
+            <h2>
+                ⚡ Incremental Values
+            </h2>
+
+            <div class="grid">
+
+                <!-- BUS M -->
+
+                <div class="fault-card green">
+
+                    <h3>
+                        🟢 Bus-m
+                    </h3>
+
+                    <input type="text"
+                           placeholder="Vm2_fault">
+
+                    <input type="text"
+                           placeholder="Vm2_prefault">
+
+                    <input type="text"
+                           placeholder="Im2_fault">
+
+                    <input type="text"
+                           placeholder="Im2_prefault">
+
+                </div>
+
+                <!-- BUS N -->
+
+                <div class="fault-card blue">
+
+                    <h3>
+                        🔵 Bus-n
+                    </h3>
+
+                    <input type="text"
+                           placeholder="Vn2_fault">
+
+                    <input type="text"
+                           placeholder="Vn2_prefault">
+
+                    <input type="text"
+                           placeholder="In2_fault">
+
+                    <input type="text"
+                           placeholder="In2_prefault">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- POLAR -->
+
+        <div class="card section hidden"
+             id="polarSection">
+
+            <h2>
+                ⚡ Polar Form
+            </h2>
+
+            <div class="grid">
+
+                <div class="fault-card orange">
+
+                    <h3>
+                        🟠 Bus-m
+                    </h3>
+
+                    <input type="number"
+                           placeholder="|ΔVm2|">
+
+                    <input type="number"
+                           placeholder="θV">
+
+                    <input type="number"
+                           placeholder="|ΔIm2|">
+
+                    <input type="number"
+                           placeholder="θI">
+
+                </div>
+
+                <div class="fault-card purple">
+
+                    <h3>
+                        🟣 Bus-n
+                    </h3>
+
+                    <input type="number"
+                           placeholder="|ΔVn2|">
+
+                    <input type="number"
+                           placeholder="θV">
+
+                    <input type="number"
+                           placeholder="|ΔIn2|">
+
+                    <input type="number"
+                           placeholder="θI">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RECTANGULAR -->
+
+        <div class="card section hidden"
+             id="rectangularSection">
+
+            <h2>
+                ⚡ Rectangular Form
+            </h2>
+
+            <div class="grid">
+
+                <div class="fault-card green">
+
+                    <h3>🟢 Bus-m</h3>
+
+                    <input type="text"
+                           placeholder="ΔVm2">
+
+                    <input type="text"
+                           placeholder="ΔIm2">
+
+                </div>
+
+                <div class="fault-card blue">
+
+                    <h3>🔵 Bus-n</h3>
+
+                    <input type="text"
+                           placeholder="ΔVn2">
+
+                    <input type="text"
+                           placeholder="ΔIn2">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DIRECT -->
+
+        <div class="card section hidden"
+             id="directSection">
+
+            <h2>
+                ⚡ Direct Power Inputs
+            </h2>
+
+            <input type="number"
+                   placeholder="ΔPm2">
+
+            <input type="number"
+                   placeholder="ΔPn2">
+
+        </div>
+
+        <!-- FORMULA -->
+
+        <div class="formula-box">
+
+            <h2>
+                📘 Main Relaying Formula
+            </h2>
+
+            <p class="formula">
+                ΔRSNSP = ( ΔPm2 + ΔPn2 ) / ΔPmin
+            </p>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button onclick="calculate()">
+
+            ⚡ Calculate ΔRSNSP
+
+        </button>
+
+        <!-- RESULTS -->
+
+        <div class="result-box">
+
+            <h2>
+                📊 Results Dashboard
+            </h2>
+
+            <div class="results">
+
+                <div class="result-card">
+
+                    <p>ΔPm2</p>
+
+                    <h3 id="pm2">
+                        0.0000
+                    </h3>
+
+                </div>
+
+                <div class="result-card">
+
+                    <p>ΔPn2</p>
+
+                    <h3 id="pn2">
+                        0.0000
+                    </h3>
+
+                </div>
+
+                <div class="result-card">
+
+                    <p>ΔPmin</p>
+
+                    <h3 id="pmin">
+                        0.0000
+                    </h3>
+
+                </div>
+
+                <div class="result-card highlight">
+
+                    <p>ΔRSNSP</p>
+
+                    <h3 id="rsnsp">
+                        0.0000
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="page.js"></script>
+    <script>
+window.addEventListener("load", () => {
+
+    const loader = document.querySelector(".loader");
+
+    // Show loader for 4 seconds
+    setTimeout(() => {
+
+        loader.classList.add("loader--hidden");
+
+        loader.addEventListener("transitionend", () => {
+            loader.remove();
+        });
+
+    }, 4000); //4000ms = 4 seconds
+
+});
+</script>
+
+</body>
+</html>
+
