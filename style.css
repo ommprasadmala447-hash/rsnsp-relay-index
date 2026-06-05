@@ -196,7 +196,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(rgba(7, 17, 31, 0.45), rgba(7, 17, 31, 0.45)),
-    url("background.jpg") center/cover no-repeat fixed;
+    url("background.webp") center center / cover no-repeat;
   color: #1f2937;
   line-height: 1.7;
   padding: 30px;
