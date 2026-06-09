@@ -397,3 +397,21 @@ p:has(sup):hover {
     background:#16a34a;
     transform:scale(1.05);
 }
+
+/* Make a button for link of IEEE Xplore */
+
+.read-more{
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: #08202f;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.read-more:hover{
+    background: #071319;
+    transform: translateY(-2px);
+}
