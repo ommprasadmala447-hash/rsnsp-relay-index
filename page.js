@@ -1,3 +1,4 @@
+
 const method = document.getElementById("method");
 
 const sections = {
@@ -90,7 +91,8 @@ function polarToComplex(mag, angleDeg) {
 // ==============================
 // MAIN CALCULATION
 // ==============================
-function calculate() {
+function calculate() { 
+    
 
     let Pm2, Pn2;
     let selected = method.value;
@@ -145,6 +147,8 @@ function calculate() {
             parseFloat(inputs[0].value),
             parseFloat(inputs[1].value)
         );
+
+        // in this user will give the angle in degree and magnitude 
 
         let Im2 = polarToComplex(
             parseFloat(inputs[2].value),
@@ -210,9 +214,78 @@ function calculate() {
     // ================= FINAL RSNSP =================
     let RSNSP = (Pm2 + Pn2) / Pmin;
 
-    // ================= OUTPUT =================
-    document.getElementById("pm2").innerText = Pm2.toFixed(4);
-    document.getElementById("pn2").innerText = Pn2.toFixed(4);
-    document.getElementById("pmin").innerText = Pmin.toFixed(4);
-    document.getElementById("rsnsp").innerText = RSNSP.toFixed(4);
+    // ================= FAULT CLASSIFICATION =================
+let faultType = "";
+let faultCondition = "";
+
+if (RSNSP >= 2) {
+
+    faultType = "Internal Fault Condition";
+    faultCondition = `${RSNSP.toFixed(4)} ≥ 2 ✓`;
+
 }
+else if (RSNSP < 0) {
+
+    faultType = "External Fault Condition";
+    faultCondition = `${RSNSP.toFixed(4)} < 0 ✓`;
+
+}
+else {
+
+    faultType = "Undetermined / Transition Region";
+    faultCondition = `0 ≤ ${RSNSP.toFixed(4)} < 2`;
+
+}
+
+    // ================= OUTPUT =================
+document.getElementById("pm2").innerText =
+    Pm2.toFixed(4);
+
+document.getElementById("pn2").innerText =
+    Pn2.toFixed(4);
+
+document.getElementById("pmin").innerText =
+    Pmin.toFixed(4);
+
+document.getElementById("rsnsp").innerText =
+    RSNSP.toFixed(4);
+
+// ================= FAULT ANALYSIS OUTPUT =================
+
+
+document.getElementById("faultType").innerText =
+    faultType;
+
+document.getElementById("faultCondition").innerText =
+    faultCondition;
+}
+
+// ==============================
+// ENTER KEY NAVIGATION (when user press enter key focus should move to next input field)
+// ==============================
+
+document.addEventListener("keydown", function (e) {
+
+    if (e.key !== "Enter") return;
+
+    const activeInput = document.activeElement;
+
+    if (activeInput.tagName !== "INPUT") return;
+
+    e.preventDefault();
+
+    const visibleInputs = Array.from(
+        document.querySelectorAll(".section:not(.hidden) input")
+    );
+
+    const currentIndex = visibleInputs.indexOf(activeInput);
+
+    if (currentIndex === -1) return;
+
+    if (currentIndex < visibleInputs.length - 1) {
+        visibleInputs[currentIndex + 1].focus();
+    } else {
+        calculate();
+    }
+
+});
