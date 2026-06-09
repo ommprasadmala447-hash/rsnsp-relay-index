@@ -252,6 +252,12 @@ button:hover{
     gap:25px;
 }
 
+.fault-classification{
+
+    margin-top:30px;
+
+}
+
 .result-card{
 
     background:#13243b;
@@ -389,4 +395,92 @@ button:hover{
     50%{
         opacity:1;
     }
+}
+
+/* =========================
+   FAULT ANALYSIS
+========================= */
+
+.fault-result-box{
+
+    margin-top:30px;
+
+    background:#0f1c2e;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    border:1px solid #18324f;
+
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+
+}
+
+.fault-result-box h2{
+
+    color:#00d9ff;
+
+    margin-bottom:25px;
+
+}
+
+.fault-results{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.fault-card-result{
+
+    background:#13243b;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+}
+
+.fault-card-result p{
+
+    color:#b8c7d9;
+
+    margin-bottom:10px;
+
+}
+
+.fault-card-result h3{
+
+    color:#00ff95;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+}
+
+.formula-note{
+
+    margin-top:20px;
+
+    color:#b8c7d9;
+
+    line-height:1.8;
+
+}
+
+@media(max-width:768px){
+
+    .fault-results{
+
+        grid-template-columns:1fr;
+
+    }
+
 }
